@@ -21,10 +21,15 @@ public class AddAllTest {
                 "302-555-1111",
         };
 
+        String bracketRemover = Arrays.toString(phoneNumbers)
+                .replace("[", "")
+                .replace("]", "")
+                .trim();
+
         // when
-        phoneBook.addAll(name, phoneNumbers);
+        phoneBook.addAll(name, bracketRemover);
         List<String> actualPhoneNumbers = phoneBook.lookup(name);
-        Assert.assertEquals(Arrays.asList(phoneNumbers), actualPhoneNumbers);
+        Assert.assertEquals(Arrays.asList(bracketRemover), actualPhoneNumbers);
     }
 
 
@@ -41,10 +46,15 @@ public class AddAllTest {
                 "302-555-2222",
         };
 
+        String bracketRemover = Arrays.toString(phoneNumbers)
+                .replace("[", "")
+                .replace("]", "")
+                .trim();
+
         // when
-        phoneBook.addAll(name, phoneNumbers);
+        phoneBook.addAll(name, bracketRemover);
         List<String> actualPhoneNumbers = phoneBook.lookup(name);
-        Assert.assertEquals(Arrays.asList(phoneNumbers), actualPhoneNumbers);
+        Assert.assertEquals(Arrays.asList(bracketRemover), actualPhoneNumbers);
     }
 
 
@@ -60,9 +70,14 @@ public class AddAllTest {
                 "302-555-5656",
         };
 
+        String bracketRemover = Arrays.toString(phoneNumbers)
+                .replace("[", "")
+                .replace("]", "")
+                .trim();
+
         // when
-        phoneBook.addAll(name, phoneNumbers);
+        phoneBook.addAll(name, bracketRemover);
         List<String> actualPhoneNumbers = phoneBook.lookup(name);
-        Assert.assertEquals(Arrays.asList(phoneNumbers), actualPhoneNumbers);
+        Assert.assertEquals(Arrays.asList(bracketRemover), actualPhoneNumbers);
     }
 }
