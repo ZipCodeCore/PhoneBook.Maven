@@ -3,6 +3,11 @@ package com.zipcodewilmington.phonebook;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 public class RemoveTest {
     @Test
     public void test1() {
@@ -12,6 +17,9 @@ public class RemoveTest {
         String phoneNumber = "302-555-4545";
         phoneBook.add(name, phoneNumber);
         Assert.assertTrue(phoneBook.hasEntry(name, phoneNumber));
+
+        Map<String, List<String>> demoPhonebook = phoneBook.getMap();
+        PhoneBook newPhoneBook = new PhoneBook(demoPhonebook);
 
         // when
         phoneBook.remove(name);
