@@ -1,11 +1,8 @@
 package com.zipcodewilmington.phonebook;
 
-import java.util.List;
-import java.util.ArrayList;
+import java.util.*;
 //import java.util.HashMap;
-import java.util.Iterator;
-import java.util.LinkedHashMap;
-import java.util.Map;
+
 
 /**
  * Created by leon on 1/23/18.
@@ -16,39 +13,70 @@ public class PhoneBook {
     private final Map<String, List<String>> phonebook;
 
     public PhoneBook(Map<String, List<String>> map) {
-        this.phonebook = null;
+
+        phonebook = map;
     }
 
     public PhoneBook() {
-        this(null);
+
+        phonebook = new LinkedHashMap<>();
     }
 
     public void add(String name, String phoneNumber) {
+        List<String> phoneNumberList = Arrays.asList(phoneNumber);
+        phonebook.put(name,phoneNumberList);
     }
 
     public void addAll(String name, String... phoneNumbers) {
+        List<String> phoneNumList = Arrays.asList(phoneNumbers);
+        phonebook.put(name,phoneNumList);
     }
 
     public void remove(String name) {
+        phonebook.remove(name);
     }
 
     public Boolean hasEntry(String name) {
-        return null;
+
+        if(phonebook.containsKey(name)){
+            return true;
+        }else {
+            return false;
+        }
     }
 
     public List<String> lookup(String name) {
-        return null;
+
+        return phonebook.get(name);
     }
 
     public String reverseLookup(String phoneNumber)  {
-        return null;
+      for(Map.Entry<String,List<String>> entry : phonebook.entrySet()){
+          if(entry.getValue().contains(phoneNumber)){
+              return entry.getKey();
+          }
+
+        }
+       return null;
     }
 
     public List<String> getAllContactNames() {
-        return null;
+        List<String> allNames = new ArrayList<>();
+        for(String name : phonebook.keySet()){
+            allNames.add(name);
+        }
+        return allNames;
     }
 
     public Map<String, List<String>> getMap() {
-        return null;
+
+        return phonebook;
+    }
+
+    @Override
+    public String toString() {
+        return "PhoneBook{" +
+                "phonebook=" + phonebook +
+                '}';
     }
 }
